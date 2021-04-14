@@ -20,10 +20,17 @@ public class ListBasedDatabase implements CustomerDatabase{
 
     @Override
     public Customer findCustomerById(int id) {
-        for (Customer customer : customerList) {
-            if (customer.id == id) {
-                return customer;
+        try {
+            for (Customer customer : customerList) {
+                if (customer.id == id) {
+                    return customer;
+                }
             }
+
+        }catch (NullPointerException npe){
+            System.out.println("Your customer list is empty");
+        }catch (IndexOutOfBoundsException iobe){
+            System.out.println("This id does not exist in our database");
         }
         return null;
     }

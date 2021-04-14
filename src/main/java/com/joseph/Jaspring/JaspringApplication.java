@@ -36,10 +36,6 @@ public class JaspringApplication {
 //        customerDatabase.save(myCustomer);
 
 
-
-
-
-
 //        ListBasedDatabase lb = (ListBasedDatabase) customerDatabase;
 //        lb.myOtherMethod();
     }
