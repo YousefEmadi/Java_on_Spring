@@ -37,8 +37,14 @@ public class ListBasedDatabase implements CustomerDatabase{
 
     @Override
     public boolean removeUserById(int id){
-        customerList.remove(customerList.indexOf(findCustomerById(id)));
-                return true;
+        try {
+            customerList.remove(customerList.indexOf(findCustomerById(id)));
+            return true;
+        } catch (Exception e){
+            System.out.println("oops! sth is wrong with your entered data !!!");
+            return false;
+        }
+
         }
 
      /** Pst... Joseph, example of a method that is not part of the CustomerDatabase interface **/
