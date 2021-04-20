@@ -1,16 +1,26 @@
 package com.joseph.Jaspring;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
+    @Id
     int id;
     String name;
     int age;
-//    String address;
+    String address;
+
 
     public Customer(int id, String name, int age, String address) {
         this.id = id;
         this.name = name;
         this.age = age;
-//        this.address = address;
+        this.address = address;
+    }
+
+    public Customer() {
+
     }
 
     public int getId() {
@@ -25,9 +35,9 @@ public class Customer {
         return age;
     }
 
-//    public String getAddress() {
-//        return address;
-//    }
+    public String getAddress() {
+        return address;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -42,6 +52,6 @@ public class Customer {
     }
 
     public void setAddress(String address) {
-//        this.address = address;
+        this.address = address;
     }
 }

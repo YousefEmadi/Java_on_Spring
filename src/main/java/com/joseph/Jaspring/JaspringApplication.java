@@ -1,13 +1,25 @@
 package com.joseph.Jaspring;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 
 @SpringBootApplication
-public class JaspringApplication {
+public class JaspringApplication implements ApplicationContextAware {
+    public static ApplicationContext ctx;
+
+    @Autowired
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        ctx = applicationContext;
+    }
+
 
     public static void main(String[] args) {
-//        SpringApplication.run(JaspringApplication.class, args);
+        SpringApplication.run(JaspringApplication.class, args);
 
 
 //      ArrayList<Customer> myArray = new ArrayList<Customer>();
@@ -19,8 +31,12 @@ public class JaspringApplication {
 
 
         ConsoleView view = new ConsoleView();
-        CustomerDatabase customerDatabase = new ListBasedDatabase();
-//        Customer myCustomer = view.getCustomer();
+
+
+        CustomerDatabase customerDatabase = new HibernateDatabase();
+
+//        CustomerDatabase customerDatabase = new ListBasedDatabase();
+
         myController controller = new myController();
         controller.configure(view, customerDatabase);
 
@@ -28,17 +44,15 @@ public class JaspringApplication {
             controller.getAndDoNextAction();
             System.out.println("OK!");
         }
-//        myArray.add(customer1);
-//        System.out.println(myArray.get(0).name);
 
 
-//
-//        customerDatabase.save(myCustomer);
+
 
 
 //        ListBasedDatabase lb = (ListBasedDatabase) customerDatabase;
 //        lb.myOtherMethod();
     }
+
 
 
 }
