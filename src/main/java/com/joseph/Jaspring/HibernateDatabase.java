@@ -37,7 +37,7 @@ public class HibernateDatabase implements CustomerDatabase{
 
     @Override
     public boolean removeUserById(int id) {
+        customerRepository.delete(findCustomerById(id));
         return false;
     }
-
     }
